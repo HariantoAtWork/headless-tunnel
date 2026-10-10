@@ -1,0 +1,13 @@
+{
+  "name": "headless-tunnel",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "bun run server.mjs",
+    "dev": "bun --watch run server.mjs"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  }
+}

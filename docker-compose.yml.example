@@ -1,0 +1,13 @@
+services:
+  headless-tunnel:
+    container_name: headless-tunnel
+    image: ${DOCKERHUB_USERNAME:-harianto}/headless-tunnel:latest
+    ports:
+      - "${TUNNEL_HOST_PORT:-9382}:9382"
+    environment:
+      TUNNEL_PORT: "${TUNNEL_PORT:-9382}"
+      TUNNEL_HOST: "0.0.0.0"
+      # Chromium-facing origin (Tailscale MagicsDNS of this service — not the dns01 register host)
+      PUBLIC_BASE_URL: "${PUBLIC_BASE_URL:-https://headless-tunnel.catfish-shade.ts.net}"
+      TUNNEL_IDLE_TTL_MS: "${TUNNEL_IDLE_TTL_MS:-900000}"
+    restart: unless-stopped

@@ -1,0 +1,7 @@
+# docker compose -f _build.yml build
+services:
+  headless-tunnel:
+    build:
+      context: ./src/headless-tunnel
+      dockerfile: Dockerfile
+    image: harianto/headless-tunnel:latest
