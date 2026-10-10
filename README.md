@@ -4,6 +4,17 @@ Shared **WebSocket tunnel broker** (bearer-free). Local apps register outbound; 
 
 Gate **registration** with [dns01-proxy](https://github.com/harianto/dns01-stack) Access Lists — same pattern as AI servers that have no built-in auth. The tunnel process itself does **not** verify bearer tokens.
 
+## Docs (wiki)
+
+Longer guides live in [`docs/`](./docs/Home.md):
+
+- [Home](./docs/Home.md)
+- [Architecture](./docs/Architecture.md)
+- [WebSocket protocol](./docs/WebSocket-Protocol.md)
+- [Deploy](./docs/Deploy.md)
+- [With markdown-to-cv](./docs/With-markdown-to-cv.md)
+- [Troubleshooting](./docs/Troubleshooting.md)
+
 ## Endpoints
 
 | Method | Path | Notes |
