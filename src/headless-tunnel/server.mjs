@@ -13,6 +13,7 @@
 import http from 'node:http'
 import { randomUUID } from 'node:crypto'
 import { WebSocketServer } from 'ws'
+import { rewriteTunnelHttpResult } from './rewrite.mjs'
 
 const PORT = Number(process.env.TUNNEL_PORT || process.env.PORT || 9382)
 const HOST = process.env.TUNNEL_HOST || '0.0.0.0'
@@ -201,13 +202,17 @@ const server = http.createServer(async (req, res) => {
       bodyBase64: bodyBuf.length ? bodyBuf.toString('base64') : undefined,
     })
 
-    const outHeaders = { ...(result.headers || {}) }
-    delete outHeaders['transfer-encoding']
-    delete outHeaders.connection
-    const body = Buffer.isBuffer(result.body)
+    const rawHeaders = { ...(result.headers || {}) }
+    delete rawHeaders['transfer-encoding']
+    delete rawHeaders.connection
+    const rawBody = Buffer.isBuffer(result.body)
       ? result.body
       : Buffer.from(result.body || [])
-    outHeaders['content-length'] = String(body.length)
+    const { body, headers: outHeaders } = rewriteTunnelHttpResult(
+      rawBody,
+      rawHeaders,
+      parsed.tunnelId,
+    )
     res.writeHead(result.status || 502, outHeaders)
     res.end(body)
   } catch (err) {

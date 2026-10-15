@@ -8,6 +8,7 @@
 | PDF waits forever on `data-cv-print-ready` | Print page never rendered / wrong path | Hit `/t/:id/print/…` in a browser; confirm local Nuxt returns 200 |
 | HTTP 502 from `/t/:id/…` | Local fetch failed or session closed | Keep WS open until PDF finishes; check local origin port |
 | Empty / tiny PDF | Playwright got an error HTML page | `POST /fetch` the same URL; inspect title/body |
+| PDF has content but no CSS/fonts | Root-absolute `/_nuxt/…` resolved outside `/t/:id` | Broker/client rewrite (this repo); redeploy tunnel + restart markdown-to-cv |
 | Session count stuck | Clients not closing sockets | Rely on idle TTL or close after each job |
 
 ## Quick checks
