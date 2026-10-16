@@ -14,6 +14,7 @@ Longer guides live in [`docs/`](./docs/Home.md):
 - [Deploy](./docs/Deploy.md)
 - [With markdown-to-cv](./docs/With-markdown-to-cv.md)
 - [Troubleshooting](./docs/Troubleshooting.md)
+- [SemVer releases](./docs/semver-releases.md) — how to version and publish to Docker Hub
 
 ## Endpoints
 
@@ -63,6 +64,8 @@ curl -s http://127.0.0.1:9382/health
 ```
 
 Multi-arch Hub push: `./dc.sh push` (amd64 + arm64).
+
+**GitHub → Docker Hub (SemVer):** `git tag v1.0.1 && git push origin v1.0.1`. Guide: [docs/semver-releases.md](docs/semver-releases.md).
 
 Default host port: **9382**.
 

@@ -9,6 +9,7 @@ Shared **WebSocket reverse-tunnel broker**: a local app registers outbound; remo
 | [Deploy](Deploy.md) | Docker, env, dns01-proxy, `PUBLIC_BASE_URL` |
 | [With markdown-to-cv](With-markdown-to-cv.md) | Save as PDF / Test PDF wiring |
 | [Troubleshooting](Troubleshooting.md) | Common failures |
+| [SemVer releases](semver-releases.md) | Version bumps and Docker Hub publish |
 
 ## One-sentence mental model
 
