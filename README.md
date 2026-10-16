@@ -52,7 +52,20 @@ Longer guides live in [`docs/`](./docs/Home.md):
 
 Wrong/missing bearer → **401 at dns01**; the tunnel never sees the connection.
 
-## Run
+## Use
+
+### Hub image
+
+```bash
+docker pull harianto/headless-tunnel:1.0.0
+cp .env.example .env
+cp docker-compose.yml.example docker-compose.yml
+# edit image tag to 1.0.0 if you pinned latest in the example
+docker compose up -d
+curl -s http://127.0.0.1:9382/health
+```
+
+### Local build
 
 ```bash
 cp .env.example .env
@@ -63,11 +76,11 @@ docker compose up -d
 curl -s http://127.0.0.1:9382/health
 ```
 
-Multi-arch Hub push: `./dc.sh push` (amd64 + arm64).
+Default host port: **9382**. Apps register with a WebSocket to `/tunnel`; Chromium fetches `PUBLIC_BASE_URL/t/<id>/…`. Full deploy notes: [docs/Deploy.md](docs/Deploy.md).
+
+Multi-arch Hub push (local): `./dc.sh push`.
 
 **GitHub → Docker Hub (SemVer):** `git tag v1.0.1 && git push origin v1.0.1`. Guide: [docs/semver-releases.md](docs/semver-releases.md).
-
-Default host port: **9382**.
 
 ## Env
 
